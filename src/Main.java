@@ -1,5 +1,4 @@
-import Day7.Day7;
-import Day8.Day8;
+import Day10.Day10;
 import Day9.Day9;
 
 public class Main {
@@ -11,5 +10,9 @@ public class Main {
 
         Day9 day9 = new Day9();
         day9.readInput();
+        day9.printVisitedTailPosCount();
+
+//        Day10 day10 = new Day10();
+//        day10.readInput();
     }
 }

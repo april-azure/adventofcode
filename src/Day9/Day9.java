@@ -5,72 +5,67 @@ import java.util.Scanner;
 import java.util.Set;
 
 public class Day9 {
-    int register = 1;
-    int cycle = 0;
-    int signalStrength = 0;
+    int headX;
+    int headY;
+    int tailX;
+    int tailY;
 
-    Set<Integer> targetSingalStrengthCycles;
+    Set<String> visited = new HashSet<>();
 
-    public Day9() {
-        targetSingalStrengthCycles = new HashSet<>();
-        targetSingalStrengthCycles.add(20);
-        targetSingalStrengthCycles.add(60);
-        targetSingalStrengthCycles.add(100);
-        targetSingalStrengthCycles.add(140);
-        targetSingalStrengthCycles.add(180);
-        targetSingalStrengthCycles.add(220);
+    private void recordTailVisit() {
+        visited.add(tailX + "," + tailY);
     }
 
-    public void noop() {
-        cycle++;
-        drawCRT();
-        calculateSingalStrength();
-    }
-
-    public void addX(int x) {
-        // clock 1
-        cycle++;
-        calculateSingalStrength();
-        drawCRT();
-
-        // clock 2
-        cycle++;
-        calculateSingalStrength();
-        drawCRT();
-        register += x;
-    }
-
-    private void drawCRT() {
-        int ROW_SIZE = 40;
-        int pos = (cycle - 1) % ROW_SIZE;
-        // if meet row size print new line
-        if (pos == 0) {
-            System.out.println();
+    public void moveUp() {
+        headY++;
+        if (headY > tailY + 1) {
+            tailY = headY - 1;
+            tailX = headX;
         }
-
-        // if overlap print #
-        if (pos - 1 <= register && register <= pos + 1
-        ) {
-            System.out.print("#");
-        } else {
-            System.out.print(".");
-        }
+        recordTailVisit();
     }
 
-    private void calculateSingalStrength() {
-        if (targetSingalStrengthCycles.contains(cycle)) {
-            signalStrength += (cycle * register);
+    public void moveDown() {
+        headY--;
+        if (headY < tailY - 1) {
+            tailY = headY + 1;
+            tailX = headX;
         }
+        recordTailVisit();
+    }
+
+    public void moveLeft() {
+        headX--;
+        if (headX < tailX - 1) {
+            tailX = headX + 1;
+            tailY = headY;
+        }
+        recordTailVisit();
+    }
+
+    public void moveRight() {
+        headX++;
+        if (headX > tailX + 1) {
+            tailX = headX - 1;
+            tailY = headY;
+        }
+        recordTailVisit();
     }
 
     public void parseCmd(String cmd) {
-        if (cmd.equals("noop")) {
-            noop();
-        }
-
-        if (cmd.startsWith("addx")) {
-            int val = Integer.parseInt(cmd.substring(5));
-            addX(val);
+        String direction = cmd.substring(0, 1);
+        int step = Integer.parseInt(cmd.substring(2));
+        for (int i = 0; i < step; i++) {
+            if (direction.equals("L")) {
+                moveLeft();
+            } else if (direction.equals("R")) {
+                moveRight();
+            } else if (direction.equals("U")) {
+                moveUp();
+            } else {
+                moveDown();
+            }
+//            System.out.println(tailX + "," +tailY);
         }
     }
 
@@ -80,7 +75,9 @@ public class Day9 {
             String cmd = in.nextLine();
             parseCmd(cmd);
         }
+    }
 
-        System.out.println(signalStrength);
+    public void printVisitedTailPosCount() {
+        System.out.println("visited " + visited.size());
     }
 }
