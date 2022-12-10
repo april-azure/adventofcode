@@ -36,7 +36,7 @@ public class Day8 {
                 }
 
                 // left
-                int left=0;
+                int left = 0;
                 for (int k = j - 1; k >= 0; k--) {
                     left++;
                     if (trees[i][k] >= trees[i][j]) {
@@ -47,7 +47,7 @@ public class Day8 {
                 // right
                 int right = 0;
                 for (int k = j + 1; k < col; k++) {
-                    right ++;
+                    right++;
                     if (trees[i][k] >= trees[i][j]) {
                         break;
                     }
