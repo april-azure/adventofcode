@@ -143,24 +143,4 @@ public class Day9Part2 {
             return Math.abs(pre.x - x) <= 1 && Math.abs(pre.y - y) <= 1;
         }
     }
-
-    // print for debug
-    private void print(Knot head) {
-        Set<String> current = new HashSet<>();
-        while (head != null) {
-            current.add(head.x + "," + head.y);
-            head = head.next;
-        }
-
-        for (int i = -15; i < 15; i++) {
-            for (int j = -15; j < 15; j++) {
-                if (current.contains(j + "," + i)) {
-                    System.out.print('#');
-                } else {
-                    System.out.print('.');
-                }
-            }
-            System.out.println();
-        }
-    }
 }

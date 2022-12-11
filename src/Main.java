@@ -1,4 +1,5 @@
 import Day10.Day10;
+import Day11.Day11;
 import Day9.Day9;
 import Day9.Day9Part2;
 
@@ -13,11 +14,14 @@ public class Main {
 //        day9.readInput();
 //        day9.printVisitedTailPosCount();
 
-        Day9Part2 part2 = new Day9Part2();
-        part2.readInput();
-        part2.cntResult();
+//        Day9Part2 part2 = new Day9Part2();
+//        part2.readInput();
+//        part2.cntResult();
 
 //        Day10 day10 = new Day10();
 //        day10.readInput();
+
+        Day11 day11 = new Day11();
+        day11.solve();
     }
 }
