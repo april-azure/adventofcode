@@ -1,6 +1,7 @@
 import Day10.Day10;
 import Day11.Day11;
 import Day12.Day12;
+import Day14.Day14;
 import Day9.Day9;
 import Day9.Day9Part2;
 
@@ -27,7 +28,10 @@ public class Main {
 //        Day11 day11 = new Day11();
 //        day11.solve();
 
-        Day12 day12 = new Day12();
-        day12.solve();
+//        Day12 day12 = new Day12();
+//        day12.solve();
+
+        Day14 day14 = new Day14();
+        day14.solve();
     }
 }

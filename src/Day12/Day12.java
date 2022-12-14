@@ -20,26 +20,22 @@ public class Day12 {
         int col = lines.get(0).length();
         char[][] grid = new char[row][col];
         int[] start = new int[2];
-        int[] end = new int[2];
         for (int i = 0; i < row; i++) {
             for (int j = 0; j < col; j++) {
                 grid[i][j] = lines.get(i).charAt(j);
-                if (grid[i][j] == 'S') {
-                    grid[i][j] = 'a';
-                    start = new int[]{i, j};
-                }
+
                 if (grid[i][j] == 'E') {
-                    grid[i][j] = 'z' + 1;
-                    end = new int[]{i, j};
+                    grid[i][j] = 'z';
+                    start = new int[]{i, j};
                 }
             }
         }
 
-        int res = solve(grid, start, end, new HashSet<>());
+        int res = solve(grid, start, new HashSet<>());
         System.out.println(res);
     }
 
-    private int solve(char[][] grid, int[] start, int[] end, Set<String> visited) {
+    private int solve(char[][] grid, int[] start, Set<String> visited) {
         int step = 0;
 
         LinkedList<int[]> q = new LinkedList<>();
@@ -51,20 +47,17 @@ public class Day12 {
                 int i = cur[0], j = cur[1];
                 char curChar = grid[i][j];
 
-                if (i == end[0] && j == end[1]) return step;
+                if (grid[i][j] == 'a') return step;
+
                 int[][] dirs = new int[][]{{-1, 0}, {1, 0}, {0, 1}, {0, -1}};
                 for (int[] dir : dirs) {
                     int newi = i + dir[0], newj = j + dir[1];
                     if (newi >= 0 && newi < grid.length && newj >= 0 && newj < grid[0].length) {
-                        if (grid[newi][newj] == 'S') {
-                            continue;
-                        }
-
                         if (visited.contains(newi + "," + newj)) {
                             continue;
                         }
 
-                        if (grid[newi][newj] <= curChar + 1) {
+                        if (grid[newi][newj] >= curChar - 1) {
                             q.addLast(new int[]{newi, newj});
                             visited.add(newi + "," + newj);
                         }
