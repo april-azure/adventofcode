@@ -34,23 +34,35 @@ public class Day15 {
             maxDis = Math.max(dis, maxDis);
         }
 
-        int y = 2000000;
-        int cnt = 0;
-        for (int x = -175938 - maxDis; x <= maxx + maxDis; x++) {
-            boolean possible = true;
-            for (int[] sensorWithDis : sensorsWithDistance) {
-                int dis = calDis(sensorWithDis, x, y);
-                if (dis <= sensorWithDis[2] && !beacons.contains(x + "," + y)) {
-                    possible = false;
-                    break;
-                }
-            }
-            if (!possible) {
-//                System.out.println(x + "," + y);
-                cnt++;
+        for (int[] sensor : sensorsWithDistance) {
+            int x = sensor[0], y = sensor[1], dis = sensor[2];
+            int[] left = new int[]{x - dis - 1, y};
+            int[] bottom = new int[]{x, y - dis - 1};
+            int[] right = new int[]{x + dis + 1, y};
+            for (int i = 0; i <= dis + 1; i++) {
+                if (checkPossible(sensorsWithDistance, beacons, left[0] + i, left[1] + i))
+                    return;
+                if (checkPossible(sensorsWithDistance, beacons, bottom[0] + i, bottom[1] + i))
+                    return;
+                if (checkPossible(sensorsWithDistance, beacons, bottom[0] - i, bottom[1] + i))
+                    return;
+                if (checkPossible(sensorsWithDistance, beacons, right[0] - i, right[1] + i))
+                    return;
             }
         }
-        System.out.println(cnt);
+    }
+
+    private boolean checkPossible(List<int[]> sensorsWithDistance, Set<String> beacons, int x, int y) {
+        if (x < 0 || x > 4000000 || y < 0 || y > 4000000 || beacons.contains(x + "," + y))
+            return false;
+        for (int[] sensorWithDis : sensorsWithDistance) {
+            int dis = calDis(sensorWithDis, x, y);
+            if (dis <= sensorWithDis[2] && !beacons.contains(x + "," + y)) {
+                return false;
+            }
+        }
+        System.out.println(x + "," + y);
+        return true;
     }
 
     private int calDis(int[] pos, int i, int j) {
