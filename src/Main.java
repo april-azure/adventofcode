@@ -3,6 +3,7 @@ import Day10.Day10;
 import Day11.Day11;
 import Day12.Day12;
 import Day14.Day14;
+import Day15.Day15;
 import Day9.Day9;
 import Day9.Day9Part2;
 
@@ -36,10 +37,13 @@ public class Main {
 //        Day12 day12 = new Day12();
 //        day12.solve();
 
-        Day14 day14 = new Day14();
-        day14.solve(lines);
+//        Day14 day14 = new Day14();
+//        day14.solve(lines);
 
 //        Day202109 day202109 = new Day202109();
 //        day202109.solve(lines);
+
+        Day15 day15 = new Day15();
+        day15.solve(lines);
     }
 }
