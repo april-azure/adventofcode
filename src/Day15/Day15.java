@@ -17,7 +17,7 @@ public class Day15 {
             line = line.replace(" closest beacon is at x=", "");
             line = line.replace(" y=", "");
 
-            String[] parts = line.split(":");
+            String[] parts = line.split(";");
             String[] part1 = parts[0].split(",");
             String[] part2 = parts[1].split(",");
 

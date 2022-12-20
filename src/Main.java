@@ -4,6 +4,8 @@ import Day11.Day11;
 import Day12.Day12;
 import Day14.Day14;
 import Day15.Day15;
+//import Day16.Day16;
+import Day17.Day17;
 import Day9.Day9;
 import Day9.Day9Part2;
 
@@ -43,7 +45,19 @@ public class Main {
 //        Day202109 day202109 = new Day202109();
 //        day202109.solve(lines);
 
-        Day15 day15 = new Day15();
-        day15.solve(lines);
+//        Day15 day15 = new Day15();
+//        day15.solve(lines);
+
+//        Day16 day16 = new Day16();
+//        day16.solve(lines);
+
+//        Day17 day17 = new Day17();
+//        day17.solve(lines);
+
+//        Day19 day19 = new Day19();
+//        day19.solve(lines);
+
+        Day20 day20 = new Day20();
+        day20.solve(lines);
     }
 }
