@@ -1,4 +1,5 @@
 import AOC2021.Day202109;
+import AOC2021.Day202111;
 import Day10.Day10;
 import Day11.Day11;
 import Day12.Day12;
@@ -54,8 +55,8 @@ public class Main {
 //        Day17 day17 = new Day17();
 //        day17.solve(lines);
 
-        Day18 day18 = new Day18();
-        day18.solve(lines);
+//        Day18 day18 = new Day18();
+//        day18.solve(lines);
 
 //        Day19 day19 = new Day19();
 //        day19.solve(lines);
@@ -65,5 +66,11 @@ public class Main {
 
 //        Day21 day21 = new Day21();
 //        day21.solve(lines);
+
+//        Day22 day22 = new Day22();
+//        day22.solve(lines);
+
+        Day202111 day202111 = new Day202111();
+        day202111.solve(lines);
     }
 }
