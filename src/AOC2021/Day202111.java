@@ -18,15 +18,18 @@ public class Day202111 {
             }
         }
 
-        int total = 0;
+//        int total = 0;
         for (int i = 0; i < Integer.MAX_VALUE; i++) {
-            total += action(grid);
-//            print(grid);
+            boolean isAllFlashed = action(grid);
+            if (isAllFlashed) {
+                System.out.println("step " + (i + 1));
+                return;
+            }
         }
-        System.out.println(total);
+//        System.out.println(total);
     }
 
-    private int action(int[][] grid) {
+    private boolean action(int[][] grid) {
         int cnt = 0;
         Set<String> visited = new HashSet<>();
         LinkedList<int[]> toFlash = new LinkedList<>();
@@ -70,7 +73,7 @@ public class Day202111 {
 //            print(grid);
         }
 
-        return cnt;
+        return cnt == 100;
     }
 
     private boolean inRange(int i, int j) {

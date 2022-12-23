@@ -1,4 +1,4 @@
-package Day12;
+package Y2022;
 
 import java.io.File;
 import java.io.IOException;

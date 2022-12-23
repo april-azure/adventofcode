@@ -1,3 +1,5 @@
+package Y2022;
+
 import java.util.List;
 
 public class Day22 {

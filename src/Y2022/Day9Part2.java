@@ -1,4 +1,4 @@
-package Day9;
+package Y2022;
 
 import java.util.HashSet;
 import java.util.Scanner;

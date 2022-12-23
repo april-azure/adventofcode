@@ -1,4 +1,4 @@
-package Day11;
+package Y2022;
 
 import com.sun.source.tree.ModuleTree;
 

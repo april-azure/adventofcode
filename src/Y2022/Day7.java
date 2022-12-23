@@ -1,4 +1,4 @@
-package Day7;
+package Y2022;
 
 import java.util.*;
 
