@@ -2,6 +2,7 @@
 import Y2022.Day1;
 import Y2022.Day2;
 import Y2022.Day25;
+import Y2022.Day3;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -16,7 +17,10 @@ public class Main {
 //        Day2 day2 = new Day2();
 //        day2.solve(lines);
 
-        Day25 day25 = new Day25();
-        day25.solve(lines);
+        Day3 day3 = new Day3();
+        day3.solve(lines);
+
+//        Day25 day25 = new Day25();
+//        day25.solve(lines);
     }
 }
