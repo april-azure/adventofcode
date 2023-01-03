@@ -2,6 +2,7 @@
 
 import AOC2021.Day202101;
 import AOC2021.Day202102;
+import AOC2021.Day202103;
 import Y2022.*;
 
 import java.io.IOException;
@@ -13,8 +14,11 @@ public class Main {
     public static void main(String[] args) throws IOException {
         List<String> lines = Files.readAllLines(Paths.get("/Users/linafang/IdeaProjects/adventofcode/src/test.txt"));
 
-        Day202102 day2 = new Day202102();
-        day2.solve(lines);
+//        Day202102 day2 = new Day202102();
+//        day2.solve(lines);
+
+        Day202103 day3 = new Day202103();
+        day3.solve(lines);
 
 //        Day202101 day1 = new Day202101();
 //        day1.solve(lines);
