@@ -4,6 +4,7 @@ import java.util.List;
 
 public class Day202102 {
     public void solve(List<String> lines) {
+        int aim = 0;
         int horizontal = 0;
         int depth = 0;
         for (String str : lines) {
@@ -13,12 +14,11 @@ public class Day202102 {
 
             if (instruction.startsWith("forward")) {
                 horizontal += number;
+                depth += (aim * number);
             } else if (instruction.startsWith("down")) {
-                depth += number;
+                aim += number;
             } else if (instruction.startsWith("up")) {
-                depth -= number;
-            } else {
-                horizontal -= number;
+                aim -= number;
             }
         }
 
