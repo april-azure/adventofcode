@@ -2,6 +2,9 @@ package AOC2021;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
+
+// how to calculate the point that's closest to all points?
 
 public class Day202107 {
     public void solve(List<String> lines) {
@@ -12,7 +15,14 @@ public class Day202107 {
         }
 
         int min = Integer.MAX_VALUE;
-        for (int pos : crabs) {
+
+        int minx = Integer.MAX_VALUE, maxx = Integer.MIN_VALUE;
+        for (int val : crabs) {
+            minx = Math.min(minx, val);
+            maxx = Math.max(maxx, val);
+        }
+
+        for (int pos = minx; pos <= maxx; pos++) {
             int fuel = calculateFuel(crabs, pos);
             min = Math.min(fuel, min);
         }
@@ -22,8 +32,13 @@ public class Day202107 {
     private int calculateFuel(List<Integer> crabs, int pos) {
         int sum = 0;
         for (int crab : crabs) {
-            sum += Math.abs(crab - pos);
+            sum += cal(crab, pos);
         }
         return sum;
+    }
+
+    private int cal(int x, int y) {
+        int n = Math.abs(x - y);
+        return (1 + n) * n / 2;
     }
 }
