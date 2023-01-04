@@ -1,8 +1,6 @@
 //import Day16.Day16;
 
-import AOC2021.Day202101;
-import AOC2021.Day202102;
-import AOC2021.Day202103;
+import AOC2021.*;
 import Y2022.*;
 
 import java.io.IOException;
@@ -17,8 +15,20 @@ public class Main {
 //        Day202102 day2 = new Day202102();
 //        day2.solve(lines);
 
-        Day202103 day3 = new Day202103();
-        day3.solve(lines);
+//        Day202103 day3 = new Day202103();
+//        day3.solve(lines);
+
+//        Day202104 day04 = new Day202104();
+//        day04.solve(lines);
+
+//        Day202105 day05 = new Day202105();
+//        day05.solve(lines);
+
+//        Day202106 day06 = new Day202106();
+//        day06.solve(lines);
+
+        Day202107 day07 = new Day202107();
+        day07.solve(lines);
 
 //        Day202101 day1 = new Day202101();
 //        day1.solve(lines);
