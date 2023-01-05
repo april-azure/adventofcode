@@ -30,8 +30,11 @@ public class Main {
 //        Day202107 day07 = new Day202107();
 //        day07.solve(lines);
 
-        Day202108 day08 = new Day202108();
-        day08.solve(lines);
+//        Day202108 day08 = new Day202108();
+//        day08.solve(lines);
+
+        Day202110 day10 = new Day202110();
+        day10.solve(lines);
 
 //        Day202101 day1 = new Day202101();
 //        day1.solve(lines);
