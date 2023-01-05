@@ -1,25 +1,40 @@
 package AOC2021;
 
+import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Stack;
 
 public class Day202110 {
     public void solve(List<String> lines) {
-        int sum = 0;
+        List<Long> scores = new ArrayList<>();
         for (String line : lines) {
-            sum += calPoint(line);
+            String missing = getMissingParts(line);
+            if (!missing.equals("invalid")){
+                scores.add(calculate(missing));
+            }
         }
-        System.out.println(sum);
+
+        scores.sort((a, b) -> a < b ? -1 : 1);
+        System.out.println(scores.get(scores.size() / 2));
     }
 
-    private int calPoint(String line) {
+    private long calculate(String missing) {
+        long sum = 0;
+        for (char c : missing.toCharArray()) {
+            sum = sum * 5 + getPoint(c);
+        }
+        return sum;
+    }
+
+    private String getMissingParts(String line) {
         Stack<Character> stack = new Stack<>();
         for (char c : line.toCharArray()) {
             if (c == '[' || c == '(' || c == '<' || c == '{') {
                 stack.push(c);
             } else {
                 if (stack.size() == 0) {
-                    return getPoint(c);
+                    return "invalid";
                 }
 
                 char preC = stack.pop();
@@ -32,21 +47,34 @@ public class Day202110 {
                 if (preC == '{' && c == '}')
                     continue;
 
-                return getPoint(c);
+                return "invalid";
             }
         }
-        return 0;
+        StringBuilder sb = new StringBuilder();
+        while (stack.size() > 0) {
+            char c = stack.pop();
+            if (c == '(') {
+                sb.append(')');
+            } else if (c == '[') {
+                sb.append(']');
+            } else if (c == '{') {
+                sb.append('}');
+            } else if (c == '<') {
+                sb.append('>');
+            }
+        }
+        return sb.toString();
     }
 
     private int getPoint(char c) {
         if (c == ')')
-            return 3;
+            return 1;
         if (c == ']')
-            return 57;
+            return 2;
         if (c == '}')
-            return 1197;
+            return 3;
         if (c == '>')
-            return 25137;
+            return 4;
         return 0;
     }
 }
