@@ -21,18 +21,23 @@ public class Day202112 {
             map.get(y).add(x);
         }
 
-        dfs(new ArrayList<>(), new HashSet<>(), "start");
+        dfs(new ArrayList<>(), new HashSet<>(), "start", null);
+//        System.out.println(String.join("\n", paths));
         System.out.println(paths.size());
     }
 
-    private void dfs(List<String> path, Set<String> visited, String pos) {
+    private void dfs(List<String> path, Set<String> visited, String pos, String visitedTwice) {
+//        System.out.println(String.join(",", path) + " visit " + pos + " visited twice: " + visitedTwice);
         if (pos.equals("end")) {
-            paths.add(String.join(",",path));
+            paths.add(String.join(",", path));
             return;
         }
         path.add(pos);
         if (!pos.equals("start")) {
             if (Character.isLowerCase(pos.charAt(0))) {
+                if (visited.contains(pos)) {
+                    visitedTwice = pos;
+                }
                 visited.add(pos);
             }
         }
@@ -42,16 +47,24 @@ public class Day202112 {
             }
 
             if (nextpos.equals("end")) {
-                dfs(path, visited, "end");
+                dfs(path, visited, "end", visitedTwice);
             }
 
             char c = nextpos.charAt(0);
             if (Character.isLowerCase(c) && visited.contains(nextpos)) {
-                continue;
+                if (visitedTwice == null) {
+                    dfs(path, visited, nextpos, null);
+                } else {
+                    continue;
+                }
+            } else {
+                dfs(path, visited, nextpos, visitedTwice);
             }
-            dfs(path, visited, nextpos);
         }
         path.remove(path.size() - 1);
+        if (visitedTwice != null && visitedTwice.equals(pos)) {
+            return;
+        }
         visited.remove(pos);
     }
 }
