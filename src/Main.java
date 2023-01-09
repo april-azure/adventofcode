@@ -40,14 +40,20 @@ public class Main {
 //        Day202112 day12 = new Day202112();
 //        day12.solve(lines);
 
+        Day202117 day17 = new Day202117();
+        day17.solve(lines);
+
+//        Day202120 day20 = new Day202120();
+//        day20.solve(lines);
+
 //        Day202113 day13 = new Day202113();
 //        day13.solve(lines);
 
 //        Day202114 day14 = new Day202114();
 //        day14.solve(lines);
 
-        Day202115 day15 = new Day202115();
-        day15.solve(lines);
+//        Day202115 day15 = new Day202115();
+//        day15.solve(lines);
 
 //        Day202101 day1 = new Day202101();
 //        day1.solve(lines);
