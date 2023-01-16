@@ -17,14 +17,16 @@ public class Day202117 {
         System.out.println(range[0] + " " + range[1] + " " + range[2] + " " + range[3]);
 
         int height = Integer.MIN_VALUE;
-        
-        for (int x = 1; x <= 300; x++) {
-            for (int y = 1; y <= 300; y++) {
+        int cnt = 0;
+        for (int x = -500; x <= 500; x++) {
+            for (int y = -500; y <= 500; y++) {
                 int h = calHeight(x, y, range);
-                height = Math.max(h, height);
+                if (h!=Integer.MIN_VALUE) {
+                    cnt++;
+                }
             }
         }
-        System.out.println(height);
+        System.out.println(cnt);
     }
 
     private int calHeight(int x, int y, int[] range) {
