@@ -14,51 +14,59 @@ public class Day202018 {
 
     private long evaluate(String expression) {
         expression = expression.replace(" ", "");
-        long res = 0;
-
+        long res = 1;
+        long preVal = 0;
         int i = 0;
         char operation = '+';
 
         while (i < expression.length()) {
             char ch = expression.charAt(i);
-            if (Character.isDigit(ch)) {
-                int j = i;
-                while (j < expression.length()
-                        && Character.isDigit(expression.charAt(j))) {
-                    j++;
+            if (Character.isDigit(ch) || ch == '(') {
+                long val = 0;
+                if (Character.isDigit(ch)) {
+                    int j = getLastIndexForDigit(expression, i);
+                    val = Integer.parseInt(expression.substring(i, j));
+                    i = j;
+                } else if (ch == '(') {
+                    int j = getLastIndexForBracket(expression, i + 1);
+                    val = evaluate(expression.substring(i + 1, j - 1));
+                    i = j;
                 }
-                int val = Integer.parseInt(expression.substring(i, j));
+
                 if (operation == '+') {
-                    res = res + val;
+                    preVal = preVal + val;
                 } else {
-                    res = res * val;
+                    res = res * preVal;
+                    preVal = val;
                 }
-                i = j;
             } else if (ch == '+' || ch == '*') {
                 operation = ch;
                 i++;
-            } else if (ch == '(') {
-                int openBracketCount = 1;
-                int j = i + 1;
-                while (openBracketCount != 0) {
-                    char nextChar = expression.charAt(j);
-                    if (nextChar == '(') {
-                        openBracketCount++;
-                    } else if (nextChar == ')') {
-                        openBracketCount--;
-                    }
-                    j++;
-                }
-                long val = evaluate(expression.substring(i + 1, j - 1));
-                if (operation == '+') {
-                    res = res + val;
-                } else if (operation == '*') {
-                    res = res * val;
-                }
-                i = j;
             }
         }
 
-        return res;
+        return res * preVal;
+    }
+
+    private int getLastIndexForBracket(String expression, int i) {
+        int openBracketCount = 1;
+        while (openBracketCount != 0) {
+            char nextChar = expression.charAt(i);
+            if (nextChar == '(') {
+                openBracketCount++;
+            } else if (nextChar == ')') {
+                openBracketCount--;
+            }
+            i++;
+        }
+        return i;
+    }
+
+    private int getLastIndexForDigit(String str, int start) {
+        while (start < str.length()
+                && Character.isDigit(str.charAt(start))) {
+            start++;
+        }
+        return start;
     }
 }
