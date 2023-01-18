@@ -29,4 +29,22 @@ public class Utils {
         sb.deleteCharAt(sb.length() - 1);
         return sb.toString();
     }
+
+    public static int getLineIndexFor(List<String> lines, String exactMatch) {
+        for (int i=0;i<lines.size();i++) {
+            if (lines.get(i).equals(exactMatch)) {
+                return i;
+            }
+        }
+        return -1;
+    }
+
+    public static int getLineIndexStartWith(List<String> lines, String startWith) {
+        for (int i=0;i<lines.size();i++) {
+            if (lines.get(i).startsWith(startWith)) {
+                return i;
+            }
+        }
+        return -1;
+    }
 }

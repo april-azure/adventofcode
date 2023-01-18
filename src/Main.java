@@ -3,6 +3,7 @@
 import AOC2020.Day202016;
 import AOC2020.Day202017;
 import AOC2020.Day202018;
+import AOC2020.Day202019;
 import AOC2021.*;
 import Y2022.*;
 
@@ -55,8 +56,11 @@ public class Main {
 //        Day202017 day17 = new Day202017();
 //        day17.solve(lines);
 
-        Day202018 day18 = new Day202018();
-        day18.solve(lines);
+//        Day202018 day18 = new Day202018();
+//        day18.solve(lines);
+
+        Day202019 day19 = new Day202019();
+        day19.solve(lines);
 
 //        Day202120 day20 = new Day202120();
 //        day20.solve(lines);
