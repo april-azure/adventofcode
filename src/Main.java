@@ -59,8 +59,11 @@ public class Main {
 //        Day202019 day19 = new Day202019();
 //        day19.solve(lines);
 
-        Day202021 day21 = new Day202021();
-        day21.solve(lines);
+//        Day202021 day21 = new Day202021();
+//        day21.solve(lines);
+
+        Day202022 day22 = new Day202022();
+        day22.solve(lines);
 
 //        Day202120 day20 = new Day202120();
 //        day20.solve(lines);
