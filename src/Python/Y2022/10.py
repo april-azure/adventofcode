@@ -1,30 +1,30 @@
 def solve():
-    res = 0
-
+    vals = []
+    res1 = 0
     f = open('Y2022/test.txt', 'r')
     lines = f.readlines()
-
     cycle = 1
     val = 1
 
-    def cal():
-        nonlocal res
-        if cycle in [20,60,100,140,180,220]:
+    def tick():
+        nonlocal res1, vals
+        if cycle in [20, 60, 100, 140, 180, 220]:
             print(cycle, val)
-            res += (cycle * val)
+            res1 += (cycle * val)
+        vals.append(val)
 
     def noop():
         nonlocal cycle
-        cal()
+        tick()
         cycle += 1
         pass
 
-    def addx(v): 
+    def addx(v):
         # global cycle
         nonlocal cycle, val
-        cal()
+        tick()
         cycle += 1
-        cal()
+        tick()
         cycle += 1
         val += v
         pass
@@ -32,9 +32,22 @@ def solve():
     for line in lines:
         if line.startswith("noop"):
             noop()
-        elif line.startswith("addx"):    
+        elif line.startswith("addx"):
             v = int(line[5:])
             addx(v)
-    cal()
-    print("part1 res: ", res)
+    # tick()
+
+    # part 1
+    print("part1 res: ", res1)
+
+    # part 2
+    for i in range(len(vals)):
+        pos = i % 40
+        if vals[i] in [pos-1, pos, pos+1]:
+            print("#", end="")
+        else:
+            print(".", end="")
+        if pos == 39:
+            print()
+
 solve()
