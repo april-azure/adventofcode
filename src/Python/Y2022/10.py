@@ -1,8 +1,7 @@
 def solve():
     vals = []
     res1 = 0
-    f = open('Y2022/test.txt', 'r')
-    lines = f.readlines()
+    lines = open('test.txt', 'r').readlines()
     cycle = 1
     val = 1
 
@@ -35,7 +34,6 @@ def solve():
         elif line.startswith("addx"):
             v = int(line[5:])
             addx(v)
-    # tick()
 
     # part 1
     print("part1 res: ", res1)
