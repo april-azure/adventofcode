@@ -3,7 +3,6 @@ from functools import cmp_to_key
 lines = open("test.txt").readlines()
 lines = [line.strip() for line in lines]
 
-
 def compare(a, b):
     if isinstance(a, int) and isinstance(b, int):
         return a-b
@@ -17,7 +16,6 @@ def compare(a, b):
             return tmp
 
     return len(a) - len(b)
-
 
 list = []
 for line in lines:
