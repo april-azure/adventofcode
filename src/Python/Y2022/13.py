@@ -1,3 +1,5 @@
+from functools import cmp_to_key
+
 lines = open("test.txt").readlines()
 lines = [line.strip() for line in lines]
 
@@ -16,10 +18,18 @@ def compare(a, b):
 
     return len(a) - len(b)
 
-sum = 0
-for i in range(0, len(lines), 3):
-    first, second = eval(lines[i]), eval(lines[i+1])
-    res = compare(first, second) <= 0
-    if res:
-        sum += (i // 3 + 1)
-print(sum)
+
+list = []
+for line in lines:
+    if line:
+        list.append(eval(line.strip()))
+target = [[[2]], [[6]]]
+list.extend(target)
+
+list.sort(key=cmp_to_key(compare))
+
+res = 1
+for idx, item in enumerate(list):
+    if item in target:
+        res *= (idx+1)
+print(res)
