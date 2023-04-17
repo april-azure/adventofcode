@@ -5,16 +5,14 @@ matrix = [list(line.strip()) for line in lines]
 # print(matrix)
 row, col = len(matrix), len(matrix[0])
 
-start, end = (0, 0), (0, 0)
+end = (0, 0)
 for i in range(row):
     for j in range(col):
         if matrix[i][j] == 'S':
-            start = (i, j)
+            matrix[i][j] = 'a'
         if matrix[i][j] == 'E':
             end = (i, j)
-
-matrix[end[0]][end[1]] = 'z'
-matrix[start[0]][start[1]] = 'a'
+            matrix[i][j] = 'z'
 
 # bfs to find the shortest path
 
@@ -27,18 +25,18 @@ def adj(i, j):
 
 def bfs():
     q = collections.deque()
-    q.append((start, 0))
-    visited = set(start)
+    q.append((end, 0))
+    visited = set(end)
 
     while q:
         (i, j), step = q.popleft()
         # print(i, j)
-        if (i, j) == end:
+        if matrix[i][j] == 'a':
             print("total steps needed ", step)
             return
 
         for x, y in adj(i, j):
-            if ord(matrix[x][y]) - ord(matrix[i][j]) <= 1 and (x, y) not in visited:
+            if ord(matrix[i][j]) - ord(matrix[x][y]) <= 1 and (x, y) not in visited:
                 q.append(((x, y), step+1))
                 visited.add((x, y))
 
